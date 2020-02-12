@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Microsoft Teams Hello World Sample App</title>
+    <link href="/Content/msteams-16.css" rel="stylesheet" />
+
+    <link href="/Content/Site.css" rel="stylesheet" />
+
+    <script src="https://statics.teams.cdn.office.net/sdk/v1.5.2/js/MicrosoftTeams.min.js"></script>
+
+    <script src="/Scripts/teamsapp.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+
+
+
+</head>
+
+<body class="theme-light">
+    <div class="surface">
+        <div class="panel">
+
+            <script type="text/javascript">
+                function getJoke() {
+                    axios.get("https://icanhazdadjoke.com/", { headers: { Accept: "application/json" } })
+                        .then(function (resp) {
+                            if (resp && resp.data && resp.data.joke) {
+                                document.getElementById('joke').innerHTML = "<p>" + resp.data.joke + "</p>"
+                                document.getElementById('btnGetJoke').innerHTML = "Tell me another";
+
+                            }
+                        })
+                        .catch(function (err) {
+                            console.error(err);
+                        })
+                };
+            </script>
+            <section id="joke">
+            </section>
+            <button id="btnGetJoke" onclick="getJoke()" class="button-primary">Tell me a joke</button>
+
+        </div>
+    </div>
+</body>
+
+</html>
