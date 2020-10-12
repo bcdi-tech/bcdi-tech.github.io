@@ -3,6 +3,7 @@
 
 <head>
     <title>Feeder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -47,17 +48,21 @@
     </script>
 </head>
 
-<body class="theme-light">
+<body>
     <div class="container">
-        <div class="text-center">
-            <h1>Feeder</h1>
-            <br />
-            <button class="btn btn-primary btn-xxl" onclick="sendFeedCommand()">Click here to feed</button>
-        </div>
-        <br />
-        <ul id="ulFeeds">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="text-center">
+                    <h1>Feeder</h1>
+                    <br />
+                    <button class="btn btn-primary btn-xxl" onclick="sendFeedCommand()">Click here to feed</button>
+                </div>
+                <br />
+                <ul id="ulFeeds">
 
-        </ul>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 
