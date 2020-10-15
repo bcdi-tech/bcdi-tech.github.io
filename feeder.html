@@ -20,14 +20,14 @@
             var config = {
                 headers: {
                     "Content-Type": "application/json",
-                    "X-Parse-Application-Id": "123"
+                    "X-Parse-Application-Id": "PetTutorRT"
                 }
             };
             var data = {
-                "objectId": "mLZfVOpHtV",
                 "feed": true
             }
-            axios.put("https://bcdi-parse-sample-app.herokuapp.com/parse/classes/feeder/mLZfVOpHtV", data, config)
+            //axios.put("https://bcdi-parse-sample-app.herokuapp.com/parse/classes/feeder/mLZfVOpHtV", data, config)
+            axios.put("https://pettutor-video.herokuapp.com/parse/classes/Device/WTxNzUmjSf", data, config)
                 .then(function (resp) {
                     if (resp) {
                         console.log(resp)
