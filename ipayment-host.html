@@ -19,9 +19,11 @@
 
 <body>
     <h1>Test</h1>
-    <iframe id="myIframe"
-        src="https://acme.perryellisrabbit.com/approve?type=Order&key=preview">
+
+    <iframe src="https://acme.perryellisrabbit.com/approve?type=Order&key=preview" id="myIFrame"
+        style="width: 100%; border: none !important; overflow: hidden; height: 3355px;" scrolling="no">
     </iframe>
+
     <script>
         // iFrameResize({
         //     log: true,                  // Enable console logging
@@ -36,11 +38,12 @@
         //         console.log('iFrame closed', id)
         //     }
         // }, '#myIframe');
-        setTimeout(function() {
+        setTimeout(function () {
             iFrameResize({
                 log: true
             });
-        }, 1250);
+        }, 1250); 
     </script>
 </body>
+
 </html>
