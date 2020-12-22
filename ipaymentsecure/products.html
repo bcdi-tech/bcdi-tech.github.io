@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Business Central Embed Solutions</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/business-casual.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uiv/1.1.4/uiv.min.js"
+    integrity="sha512-6KqmWx+45cZDt1lZHJfF6OlkZPxBLU/1FcaA3VOaFm9uCdjA6mWIX/oAcB4I2CIPzz42rIxwJBkj1reP4pJEyw=="
+    crossorigin="anonymous"></script>
+
+  <style>
+    .modal-backdrop.show {
+      opacity: 0 !important;
+    }
+
+    .modal-backdrop {
+      z-index: 10 !important;
+    }
+
+    .modal,
+    .modal-content {
+      z-index: 999 !important;
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"
+    integrity="sha512-HY1lApSG7xxx8mYzs/lxRs+c5AaDThRaa3pvQB6puiswvf2lWqMJVf+8qSGiL4ZXfHQoPIqbd1TlpqfycPo3cQ=="
+    crossorigin="anonymous"></script>
+
+
+  <style>
+    iframe {
+      width: 1px;
+      min-width: 100%;
+      z-index: 9999;
+      background-image: url('/img/spinner.gif');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: white;
+    }
+  </style>
+
+  <script>
+    function showModalClick() {
+      var txtAmount = document.getElementById('txtAmount');
+      var amount = "123.45";
+      if (txtAmount && txtAmount.value) {
+        amount = txtAmount.value;
+      }
+
+      var url = "https://acme.uat-ipaymentsecure.com/approve/pay?amount=" + amount + "&embed=1";
+      var iframe = document.getElementById('ifrModalPay');
+      if (iframe) {
+        iframe.src = url;
+      }
+
+      setTimeout(function () {
+        iFrameResize({
+          log: true, // for verbose console logging
+          messageCallback: function (messageData) {
+            console.log(messageData);
+
+            setTimeout(function () {
+              var result = messageData.message;
+              if (result.success) {
+                document.getElementById('alertMessage').style.display = "inline-block";
+                document.getElementById('successMessage').innerHTML = result.message;
+                var closeButton = document.getElementById('btnCloseModal');
+                if (closeButton) closeButton.click();
+              } else {
+                // handle error or not aproved;
+              }
+            }, 2500)
+          }
+        }, '#ifrModalPay');
+      }, 800);
+      return true;
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-upper text-primary mb-3">A Free Bootstrap 4 Business Theme</span>
+    <span class="site-heading-lower">Business Casual</span>
+  </h1>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="about.html">Logged in add Payment</a>
+          </li>
+          <li class="nav-item active px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="products.html">Products</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="store.html">Store</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="product-item">
+        <div class="product-item-title d-flex">
+          <div class="bg-faded p-5 d-flex ml-auto rounded">
+            <h2 class="section-heading mb-0">
+              <span class="section-heading-upper">Blended to Perfection</span>
+              <span class="section-heading-lower">Coffees &amp; Teas</span>
+            </h2>
+          </div>
+        </div>
+        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-01.jpg" alt="">
+        <div id="app">
+
+          <div class="product-item-description d-flex mr-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">
+                This is our demo of the embedded payment widget. This allows you to incorporate the payment process into your 
+                company's site. This performs payment and can write information back to Business Central. Your site must be secured 
+                by SSL (TLS 1.2 or later) and be PCI compliant.
+              </p>
+              <br />
+              <p>
+                Go ahead -- give it a try! Just enter the amount of payment you'd like to test and click "Pay Now". To simulate a 
+                declined payment, enter the amount 504.00. To simulate a server error, enter the amount 500.00.
+              </p>
+
+              <br />
+              <h3>Buy some coffee</h3>
+
+              <!-- Button trigger modal -->
+              <input id="txtAmount" type="text" class="form-control" placeholder="$0.00"
+                style="max-width: 10em; display: inline-block;">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                onclick="showModalClick()">
+                Pay Now
+              </button>
+
+              <div id="alertMessage" class="alert alert-success" style="display: none;">
+                <p id="successMessage"> </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="product-item">
+        <div class="product-item-title d-flex">
+          <div class="bg-faded p-5 d-flex mr-auto rounded">
+            <h2 class="section-heading mb-0">
+              <span class="section-heading-upper">Delicious Treats, Good Eats</span>
+              <span class="section-heading-lower">Bakery &amp; Kitchen</span>
+            </h2>
+          </div>
+        </div>
+        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-02.jpg" alt="">
+        <div class="product-item-description d-flex ml-auto">
+          <div class="bg-faded p-5 rounded">
+            <p class="mb-0">Our seasonal menu features delicious snacks, baked goods, and even full meals perfect for
+              breakfast or lunchtime. We source our ingredients from local, oragnic farms whenever possible, alongside
+              premium vendors for specialty goods.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="product-item">
+        <div class="product-item-title d-flex">
+          <div class="bg-faded p-5 d-flex ml-auto rounded">
+            <h2 class="section-heading mb-0">
+              <span class="section-heading-upper">From Around the World</span>
+              <span class="section-heading-lower">Bulk Speciality Blends</span>
+            </h2>
+          </div>
+        </div>
+        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-03.jpg" alt="">
+        <div class="product-item-description d-flex mr-auto">
+          <div class="bg-faded p-5 rounded">
+            <p class="mb-0">Travelling the world for the very best quality coffee is something take pride in. When you
+              visit us, you'll always find new blends from around the world, mainly from regions in Central and South
+              America. We sell our blends in smaller to large bulk quantities. Please visit us in person for more
+              details.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <p class="m-0 small">Copyright &copy; Your Website 2020</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pay Now</h5>
+          <button id="btnCloseModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <iframe src="https://acme.uat-ipaymentsecure.com/approve/pay?amount=123.45&embed=1" id="ifrModalPay"
+            style="width: 100%; border: none !important; overflow: hidden; height: 700px;" scrolling="no">
+          </iframe>
+
+
+        </div>
+        <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>-->
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
