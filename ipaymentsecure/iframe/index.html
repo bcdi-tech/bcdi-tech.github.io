@@ -59,6 +59,10 @@
 
 	<script>
 		setTimeout(function () {
+			if (window.location.search) {
+				document.getElementById('myIFrame') = 'https://acme.uat-ipaymentsecure.com/approve' + window.location.search
+			}
+
 			iFrameResize({
 				log: true,
 				messageCallback: function (messageData) {
