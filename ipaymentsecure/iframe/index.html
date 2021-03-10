@@ -49,6 +49,13 @@
 				<iframe src="https://acme.uat-ipaymentsecure.com/approve?type=Order&key=preview&embed=1" id="myIFrame"
 					style="width: 100%;" scrolling="no">
 				</iframe>
+				<script>
+					(function() {
+						if (window.location.search) {
+							document.getElementById('myIFrame').src = 'https://acme.uat-ipaymentsecure.com/approve' + window.location.search
+						}
+					})()
+				</script>
 			</div>
 		</div>
 
@@ -59,13 +66,9 @@
 
 	<script>
 		setTimeout(function () {
-			if (window.location.search) {
-				document.getElementById('myIFrame') = 'https://acme.uat-ipaymentsecure.com/approve' + window.location.search
-			}
-
 			iFrameResize({
-				log: true,
-				messageCallback: function (messageData) {
+				log: false,
+				onMessage: function (messageData) {
 					document.getElementById('output').innerHTML = '<pre>' + JSON.stringify(messageData) + '</pre>';
 					console.log('--------> messageCallback messageData', messageData);
 				},
