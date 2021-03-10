@@ -3,124 +3,128 @@
 
 <head>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Iframe example</title>
+  <title>Iframe example</title>
 
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-	<!-- Custom fonts for this template -->
-	<link
-		href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-		rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"
-		integrity="sha512-HY1lApSG7xxx8mYzs/lxRs+c5AaDThRaa3pvQB6puiswvf2lWqMJVf+8qSGiL4ZXfHQoPIqbd1TlpqfycPo3cQ=="
-		crossorigin="anonymous"></script>
-	<style>
-		iframe {
-			min-width: 1px;
-			z-index: 9999;
-			background-image: url('/img/spinner.gif');
-			background-position: center;
-			background-repeat: no-repeat;
-			background-color: white;
-			border: none !important;
-			overflow: hidden;
-		}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"
+    integrity="sha512-HY1lApSG7xxx8mYzs/lxRs+c5AaDThRaa3pvQB6puiswvf2lWqMJVf+8qSGiL4ZXfHQoPIqbd1TlpqfycPo3cQ=="
+    crossorigin="anonymous"></script>
+  <style>
+    iframe {
+      min-width: 1px;
+      z-index: 9999;
+      background-image: url('/img/spinner.gif');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: white;
+      border: none !important;
+      overflow: hidden;
+    }
 
-		h1 {
-			text-decoration: underline;
-		}
-	</style>
+    h1 {
+      text-decoration: underline;
+    }
+  </style>
 
 
 </head>
 
 <body>
-	<h1 class="text-center">IFrame Example - Transactions</h1>
-	<p class="text-center">
-		This sample demonstrates how to embed the iframe in a hosted page, set the url parameters in the iframe url and
-		receive messages from the content page within the iframe. To view the add payment method workflow example, click <a href="../iframe-add-payment-method">here</a>.
-	</p>
-	<p class="text-center">
-		This example contains a few url parameters. You can override the example url parameters by adding them to this page's url. For example, 
-		<a href="/ipaymentsecure/iframe/index.html?type=ecommerce&key=preview&displayDocumentInfo=0&amount=32.88&documentNumber=SQ-12345&customerCountry=US&customerName=Test%20Url%20Customer&customerAddress=123%20Test%20Street&customerCity=Chicago&customerState=IL&customerZip=60007">
-			click here
-		</a>
-	</p>
+  <h1 class="text-center">IFrame Example - Transactions</h1>
+  <p class="text-center">
+    This sample demonstrates how to embed the iframe in a hosted page, set the url parameters in the iframe url and
+    receive messages from the content page within the iframe. To view the add payment method workflow example, click <a
+      href="../iframe-add-payment-method">here</a>.
+  </p>
+  <p class="text-center">
+    This example contains a few url parameters. You can override the example url parameters by adding them to this
+    page's url. For example,
+    <a
+      href="/ipaymentsecure/iframe/index.html?type=ecommerce&key=preview&displayDocumentInfo=0&amount=32.88&documentNumber=SQ-12345&customerCountry=US&customerName=Test%20Url%20Customer&customerAddress=123%20Test%20Street&customerCity=Chicago&customerState=IL&customerZip=60007">
+      click here
+    </a>
+  </p>
 
-	<hr />
-	<!-- Embed here -->
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<iframe
-					src="https://acme.uat-ipaymentsecure.com/approve?type=Order&key=preview&embed=1&displayDocumentInfo=0"
-					id="myIFrame" style="width: 100%;" scrolling="no">
-				</iframe>
-				<script>
-					(function () {
-						if (window.location.search) {
-							document.getElementById('myIFrame').src = 'https://acme.uat-ipaymentsecure.com/approve' + window.location.search
-						}
-					})()
-				</script>
-			</div>
-		</div>
+  <hr />
+  <!-- Embed here -->
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <iframe src="https://acme.uat-ipaymentsecure.com/approve?type=Order&key=preview&embed=1&displayDocumentInfo=0"
+          id="myIFrame" style="width: 100%;" scrolling="no">
+        </iframe>
+        <script>
+          (function () {
+            if (window.location.search) {
+              document.getElementById('myIFrame').src = 'https://acme.uat-ipaymentsecure.com/approve' + window.location.search
+            }
+          })()
+        </script>
+      </div>
+    </div>
 
-		<hr />
-		<div class="row">
-			<div class="col-12">
-				<div class="jumbotron" id="output" style="min-height: 10em; border: 1px solid skyblue; display: none;"> 
-				</div>
-			</div>
-		</div>
-	</div>
+    <hr />
+    <div class="row">
+      <div class="col-12">
+        <div class="jumbotron" id="output" style="min-height: 10em; border: 1px solid skyblue; display: none;">
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<script>
-		iFrameResize({
-			log: false, // set to true for verbose logging
+  <script>
+    iFrameResize({
+      log: false, // set to true for verbose logging
 
-			// handler/callback for receiving message from iframe content page
-			onMessage: function (messageData) {
-				// YOUR CUSTOM CODE HERE: Here's where you process the result of the embedded page action. Process successful transaction 
-				//	or errors/failures
+      // handler/callback for receiving message from iframe content page
+      onMessage: function (messageData) {
+        // YOUR CUSTOM CODE HERE: Here's where you process the result of the embedded page action. Process successful transaction 
+        //	or errors/failures
 
-				var output = document.getElementById('output')
-				output.innerHTML = '<h3>Content window message received</h3><p>' + JSON.stringify(messageData) + '</p>';
-				output.style = "display: block";
+        var output = document.getElementById('output')
+        output.innerHTML = '<h3>Content window message received</h3><p>' + JSON.stringify(messageData) + '</p>';
+        output.style = "display: block";
 
-				console.log('--------> messageCallback messageData', messageData);
+        console.log('--------> messageCallback messageData', messageData);
 
-				/*
-				The message payload returned contains an "iframe" object and a "message" object. The "message" object 
-				implements the following interface:
+        /*
+        The message payload returned contains an "iframe" object and a "message" object. The "message" object 
+        implements the following interface:
 
-					export interface IFrameMessageToHostWindow {
-						success: boolean;               // whether or not hosted workflow was successful
-						friendlyResponseText: string;   // friendly response text
-						message: string;                // technical message success or failure
-						referenceNumber: string;        // reference number from payment processor
-						documentNumber: string;         // documentNumber you provided
-						amount: number;                 // amount of transaction
-						customerName: string;
-						customerAddress: string;
-						customerCity: string;
-						customerState: string;
-						customerCountry: string;
-						customerZip: string;
-						customerEmail: string;
-						customerPhone: string;
-					}
-				*/
-			},
-			heightCalculationMethod: 'taggedElement', // iframe content window has a tagged element for resizing efficiency
-		}, '#myIFrame');
-	</script>
+          export interface IFrameMessageToHostWindow {
+            success: boolean;               // whether or not hosted workflow was successful
+            friendlyResponseText: string;   // friendly response text
+            message: string;                // technical message success or failure
+            referenceNumber: string;        // reference number from payment processor
+            documentNumber: string;         // documentNumber you provided
+            amount: number;                 // amount of transaction
+            customerName: string;
+            customerAddress: string;
+            customerCity: string;
+            customerState: string;
+            customerCountry: string;
+            customerZip: string;
+            customerEmail: string;
+            customerPhone: string;
+          }
+        */
+      },
+      heightCalculationMethod: 'taggedElement', // iframe content window has a tagged element for resizing efficiency
+    }, '#myIFrame');
+  </script>
 
 </body>
+
 </html>
