@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Iframe example</title>
+	<title>Iframe example -- Payment profile</title>
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -41,16 +41,12 @@
 </head>
 
 <body>
-	<h1 class="text-center">IFrame Example - Transactions</h1>
+	<h1 class="text-center">IFrame Example - Add Payment Method</h1>
 	<p class="text-center">
-		This sample demonstrates how to embed the iframe in a hosted page, set the url parameters in the iframe url and
-		receive messages from the content page within the iframe. To view the add payment method workflow example, click <a href="../iframe-add-payment-method">here</a>.
-	</p>
-	<p class="text-center">
-		This example contains a few url parameters. You can override the example url parameters by adding them to this page's url. For example, 
-		<a href="/ipaymentsecure/iframe/index.html?type=ecommerce&key=preview&displayDocumentInfo=0&amount=32.88&documentNumber=SQ-12345&customerCountry=US&customerName=Test%20Url%20Customer&customerAddress=123%20Test%20Street&customerCity=Chicago&customerState=IL&customerZip=60007">
-			click here
-		</a>
+		This sample demonstrates how to embed the add payment method iframe in a hosted page for the payment methods add
+		workflow, set the url parameters in the iframe url and
+		receive messages from the content page within the iframe. To view the transactional example, click <a
+			href="../iframe">here</a>.
 	</p>
 
 	<hr />
@@ -59,13 +55,13 @@
 		<div class="row">
 			<div class="col-12">
 				<iframe
-					src="https://acme.uat-ipaymentsecure.com/approve?type=Order&key=preview&embed=1&displayDocumentInfo=0"
+					src="https://bcdi.uat-ipaymentsecure.com/payment-methods/add?embed=1&key=ff7abf14-4c34-eb11-bb70-000d3a2a7faf"
 					id="myIFrame" style="width: 100%;" scrolling="no">
 				</iframe>
 				<script>
 					(function () {
 						if (window.location.search) {
-							document.getElementById('myIFrame').src = 'https://acme.uat-ipaymentsecure.com/approve' + window.location.search
+							document.getElementById('myIFrame').src = 'https://bcdi.uat-ipaymentsecure.com/payment-methods/add' + window.location.search
 						}
 					})()
 				</script>
@@ -75,7 +71,7 @@
 		<hr />
 		<div class="row">
 			<div class="col-12">
-				<div class="jumbotron" id="output" style="min-height: 10em; border: 1px solid skyblue; display: none;"> 
+				<div class="jumbotron" id="output" style="min-height: 10em; display: none;">
 				</div>
 			</div>
 		</div>
@@ -93,7 +89,7 @@
 				var output = document.getElementById('output')
 				output.innerHTML = '<h3>Content window message received</h3><p>' + JSON.stringify(messageData) + '</p>';
 				output.style = "display: block";
-
+				
 				console.log('--------> messageCallback messageData', messageData);
 
 				/*
@@ -123,4 +119,5 @@
 	</script>
 
 </body>
+
 </html>
