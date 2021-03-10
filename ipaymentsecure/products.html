@@ -76,6 +76,7 @@
       setTimeout(function () {
         iFrameResize({
           log: true, // for verbose console logging
+
           messageCallback: function (messageData) {
             console.log(messageData);
 
@@ -91,6 +92,7 @@
               }
             }, 2500)
           }
+
         }, '#ifrModalPay');
       }, 800);
       return true;
