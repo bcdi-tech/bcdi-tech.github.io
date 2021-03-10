@@ -106,7 +106,8 @@
 										log: true,
 
 										messageCallback: function (messageData) {
-											console.log('messageCallback', messageData);
+											alert('Message received from iFrame content page. Check console');
+											console.log('--------> messageCallback messageData', messageData);
 										}
 
 									}, '#myIFrame');
