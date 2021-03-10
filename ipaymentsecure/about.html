@@ -100,16 +100,23 @@
 								style="width: 100%; border: none !important; overflow: hidden; height: 1500px;"
 								scrolling="no">
 							</iframe>
+
+							<div id="output" style="display: block; width: 80%; background-color: white;">
+
+							</div>
 							<script>
 								setTimeout(function () {
 									iFrameResize({
 										log: true,
 
 										messageCallback: function (messageData) {
-											alert('Message received from iFrame content page. Check console');
+											document.getElementById('output').innerHTML = '<pre>' + JSON.stringify(messageData) + '</pre>';
 											console.log('--------> messageCallback messageData', messageData);
+										},
+										onMessage(messageData) {
+											document.getElementById('output').innerHTML = '<pre>' + JSON.stringify(messageData) + '</pre>';
+											console.log('--------> onMessage messageData', messageData);
 										}
-
 									}, '#myIFrame');
 								}, 100);
 							</script>
